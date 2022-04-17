@@ -30,10 +30,9 @@ let shuffleOrder = () => {
         let elementColor = createColorElement(order[i]); // Cria o elemento da cor pelo seu número
         lightColor(elementColor, Number(i) + 1); // Pisca o elemento de acordo com a cor
     }
-    // time = order.length * 500;
     setTimeout(() => {
         readyToClick = true; // Ao fim da exibição completa de uma sequência de cores, libera o clique nas cores
-    }, parseInt(order.length) * 500);
+    }, order.length * 500);
 }
 
 // Acende a próxima cor
