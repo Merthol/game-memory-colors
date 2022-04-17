@@ -15,7 +15,6 @@ const blue = document.querySelector('#blue');
 const circle2 = document.querySelector('#circle2');
 const textBox1 = document.querySelector('#textBox1');
 const textBox2 = document.querySelector('#textBox2');
-const textBox3 = document.getElementById('textBox3');
 const toque = document.getElementById('toque');
 const somGameOver = document.getElementById('gameOver');
 
@@ -31,10 +30,10 @@ let shuffleOrder = () => {
         let elementColor = createColorElement(order[i]); // Cria o elemento da cor pelo seu número
         lightColor(elementColor, Number(i) + 1); // Pisca o elemento de acordo com a cor
     }
-    time = order.length * 500;
+    // time = order.length * 500;
     setTimeout(() => {
         readyToClick = true; // Ao fim da exibição completa de uma sequência de cores, libera o clique nas cores
-    }, time);
+    }, parseInt(order.length) * 500);
 }
 
 // Acende a próxima cor
@@ -73,8 +72,8 @@ let checkOrder = () => {
     if (clickedOrder.length == order.length && continuar === true) {
         // Caso chegue ao fim da verificação com sucesso, informa que acertou, round depois de um período de tempo
         textBox2.innerHTML = score;
-        textBox3.style.backgroundColor = 'green';
-        textBox3.innerHTML = 'ACERTOU';
+        circle2.style.backgroundColor = 'green';
+        circle2.innerHTML = 'ACERTOU';
         readyToClick = false; // Desabilita o clique até que uma nova sequência seja exibida completamente
         setTimeout(nextRound, 2000); // Tempo para iniciar o próximo round
     }
@@ -119,8 +118,8 @@ let createColorElement = (color) => {
 let nextRound = () => {
     // Apaga os campos de informação enquanto inicia um novo round, e aumenta o score para indicar qual round está
     // sendo executado
-    textBox3.style.backgroundColor = '#ffffff';
-    textBox3.innerHTML = '';
+    circle2.style.backgroundColor = '#92e6da';
+    circle2.innerHTML = '';
     score++;
     readyToClick = false; // Impede que seja feito clique nas cores até que uma nova sequência seja totalmente exibida
     shuffleOrder(); // Exibe uma nova sequência
@@ -131,11 +130,10 @@ let gameOver = () => {
     // Toca um som indicando o fim do jogo, exibe mensagem de fim de jogo, zera o array de ordem de cores do sistema e
     // permite que seja clicado no circulo central par inicio de um novo jogo
     somGameOver.play();
-    textBox3.style.backgroundColor = 'red';
-    textBox3.innerHTML = 'GAME OVER';
+    circle2.style.backgroundColor = 'red';
+    circle2.innerHTML = 'GAME OVER\nREINICIAR';
     order = [];
     circle2.addEventListener('click', playGame); // Recolocando o evento de click para permitir reiniciar um novo jogo
-    circle2.innerHTML = 'REINICIAR';
 }
 
 // Função de inicio do jogo
