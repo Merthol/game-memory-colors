@@ -14,8 +14,8 @@ body {
 
 #circle1 {
     display: flex;
-    width: 350px;
-    height: 350px;
+    width: 320px;
+    height: 320px;
     border-radius: 100%;
     background-color: black;
     position: relative;
@@ -54,7 +54,6 @@ body {
     border-radius: 100%;
     background-color: #92e6da;
     position: absolute;
-    /* top: 40%; */
     align-items: center;
     justify-content: center;
     text-align: center;
